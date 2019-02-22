@@ -1,0 +1,89 @@
+		// Note: the format is not requried, so if students have right numbers, the output will be right
+		// test add and size
+		System.out.println("##TEST add and size###");
+		OccurrenceSet<Integer> intSet1 = new OccurrenceSet<Integer>();
+		intSet1.add(1);
+		intSet1.add(3);
+		intSet1.add(5);
+		intSet1.add(5);
+		intSet1.add(3);
+		intSet1.add(3);
+		intSet1.add(3);
+		System.out.println("inset1: [1,5,3] " + intSet1);
+		System.out.println("size: 3 " +intSet1.size());
+		
+		OccurrenceSet<Integer> intSet2 = new OccurrenceSet<Integer>();
+		intSet2.add(0);
+		intSet2.add(9);
+		intSet2.add(9);
+		intSet2.add(10);
+		intSet2.add(10);
+		System.out.println("inset2: [0,9,10] " + intSet2);
+		System.out.println("size: 3 " + intSet2.size());
+		
+		OccurrenceSet<String> stringSet = new OccurrenceSet<String>();
+		stringSet.add("hello");
+		stringSet.add("hello");
+		stringSet.add("world");
+		stringSet.add("world");
+		stringSet.add("world");
+		stringSet.add("here");
+		System.out.println("stringset : here, hello, world " + stringSet);
+		System.out.println("size: 3 " + stringSet.size());
+		
+		// test clear and isEmpty
+		System.out.println("###TEST clear and isEmpty###");
+		System.out.println("false " + stringSet.isEmpty());
+		stringSet.clear();
+		System.out.println("true " + stringSet.isEmpty());
+		
+		// test addAll
+		System.out.println("###TEST addAll###");
+		intSet2.addAll(intSet1); // After adding a new set, the frequency of unique numbers should be added as well.
+ 					 // The output will be [0: 1, 1: 1, 5: 2, 9: 2, 10: 2, 3: 3] (the number following the colon is the frequency)
+		System.out.println("inset2: [0, 1, 5, 9, 10, 3] " + intSet2);
+		
+		// test remove
+		System.out.println("TEST remove");
+		intSet1.remove(1);
+		System.out.println("inset1: [5, 3] " + intSet1);
+		
+		// test removeAll
+		// after remove itself, intSet will be empty
+		System.out.println("###TEST removeAll###");
+		intSet1.removeAll(intSet1); // intSet1 should be empty
+		System.out.println("inset1: [] " + intSet1); 
+		intSet1.add(5);
+		intSet1.add(9);
+		intSet1.add(10);
+		System.out.println("inset1: [5, 9, 10]" + intSet1);
+		
+		// test retainAll
+		// retainAll will modify set and the new set will be the intersection of two sets
+		// intset2 is [0, 1, 5, 9, 10, 3] and intset1 is [5, 9, 10]
+		// it will return true and intset2 will be 5, 9 ,10
+		System.out.println("###TEST retainAll###");
+		System.out.println("true " + intSet2.retainAll(intSet1));
+		System.out.println("inset2: [5, 9 ,10] " + intSet2);
+		
+		// test contains
+		System.out.println("###TEST contains###");
+		System.out.println("true " + intSet2.contains(5));
+		
+		// test containsAll
+		System.out.println("###TEST containsAll###");
+		System.out.println("true " + intSet2.containsAll(intSet1));
+		
+		// test toString
+		System.out.println("###TEST toString###");
+		String s = intSet1.toString();
+		System.out.println("[5, 9 ,10] " + s);
+		
+		// test toArray
+		System.out.println("###TEST toArray###");
+		Object[] t = intSet1.toArray();
+		for (Object each : t)
+		{
+			System.out.println(each);
+		}
+		System.out.println("5 " + "9 " + "10");
